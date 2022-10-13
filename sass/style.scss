@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
-@import url("base/_null.scss");
-@import url("pages");
-body {
-  font-size: 16px;
-}
+@import "base/null";
+@import "pages/body";
+@import "layout/header";
+@import "layout/wrapper";
+@import "components/logo";
+@import "components/form";

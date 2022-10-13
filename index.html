@@ -8,6 +8,52 @@
     <title>ToDo for You</title>
   </head>
   <body>
-    <h1>test</h1>
+    <div class="wrapper">
+      <div class="header">
+        <div class="container header__container">
+          <div class="header__logo">
+            <div class="logo__element">
+              <img src="./assets/image/Logo.png" alt="Main logo" />
+            </div>
+            <div class="logo__text"><h1>ToDo for You</h1></div>
+          </div>
+          <div class="header__greeting">
+            <span class="greeting"></span>
+            <input
+              type="text"
+              class="greeting__name"
+              placeholder="[Enter name]"
+            />
+          </div>
+          <div class="header__time">
+            <time class="header__time-time"></time>
+            <date class="header__time-date"></date>
+          </div>
+        </div>
+      </div>
+      <main class="main">
+        <div class="container main__container">
+          <div class="add-task">
+            <input type="text" class="add-task__input" />
+            <button class="button add-task__button"></button>
+          </div>
+          <div class="tasks">
+            <div class="tasks__container">
+              <div class="tasks__sidebar">
+                <button class="sidebar__button"></button>
+                <button class="sidebar__button"></button>
+                <button class="sidebar__button"></button>
+              </div>
+            </div>
+          </div>
+          <div class="quotes__container">
+            <div class="quote"></div>
+            <div class="author"></div>
+          </div>
+          <button class="button change-quote"></button>
+        </div>
+      </main>
+      <footer class="footer"><div class="container">Я подвал</div></footer>
+    </div>
   </body>
 </html>
