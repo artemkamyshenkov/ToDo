@@ -7,13 +7,13 @@
 }
 
 .greeting__text {
-  font-size: 22px;
+  font-size: $font-size;
 }
 
 .header__time {
   display: flex;
   flex-direction: column;
-  font-size: 22px;
+  font-size: $font-size;
 }
 .header__time-time {
   text-align: end;

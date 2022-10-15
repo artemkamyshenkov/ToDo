@@ -2,5 +2,31 @@
   flex: 1 1 auto;
 }
 .main__container {
+  padding: 30px 20px 0 20px;
   min-height: 100vh;
+}
+.create-task-block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.task-item__text {
+  font-size: 1.7rem;
+}
+
+.task-input-check {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+.task-item__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item {
+  border-bottom: 2px solid $color-button;
+  padding: 10px;
 }

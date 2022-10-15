@@ -34,21 +34,93 @@
       </div>
       <main class="main">
         <div class="container main__container">
-          <div class="add-task">
-            <input type="text" class="add-task__input" />
-            <button class="button add-task__button"></button>
-          </div>
+          <form class="create-task-block">
+            <input
+              name="taskName"
+              class="create-task-block__input default-text-input"
+              type="text"
+              placeholder="Создайте новую задачу"
+              value=""
+            />
+            <button
+              type="submit"
+              class="button create-task-block__button default-button"
+            >
+              Создать
+            </button>
+          </form>
+
           <div class="tasks">
             <div class="tasks__container">
-              <div class="tasks__sidebar">
-                <button class="sidebar__button"></button>
-                <button class="sidebar__button"></button>
-                <button class="sidebar__button"></button>
+              <div class="task-item">
+                <div class="task-item__container">
+                  <form class="task-item__form">
+                    <input type="checkbox" class="task-input-check" id="" />
+                    <label for=""></label>
+                    <span class="task-item__text"
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </form>
+                  <button class="button task-item__button">Удалить</button>
+                </div>
               </div>
+              <div class="task-item">
+                <div class="task-item__container">
+                  <form class="task-item__form">
+                    <input type="checkbox" class="task-input-check" id="" />
+                    <label for=""></label>
+                    <span class="task-item__text"
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </form>
+                  <button class="button task-item__button">Удалить</button>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="task-item__container">
+                  <form class="task-item__form">
+                    <input type="checkbox" class="task-input-check" id="" />
+                    <label for=""></label>
+                    <span class="task-item__text"
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </form>
+                  <button class="button task-item__button">Удалить</button>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="task-item__container">
+                  <form class="task-item__form">
+                    <input type="checkbox" class="task-input-check" id="" />
+                    <label for=""></label>
+                    <span class="task-item__text"
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </form>
+                  <button class="button task-item__button">Удалить</button>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="task-item__container">
+                  <form class="task-item__form">
+                    <input type="checkbox" class="task-input-check" id="" />
+                    <label for=""></label>
+                    <span class="task-item__text"
+                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </span>
+                  </form>
+                  <button class="button task-item__button">Удалить</button>
+                </div>
+              </div>
+            </div>
+            <div class="tasks__sidebar">
+              <button class="sidebar__button"></button>
+              <button class="sidebar__button"></button>
+              <button class="sidebar__button"></button>
             </div>
           </div>
           <div class="quotes__container">
-            <div class="quote"></div>
+            <div class="quote">Не бойся проиграть, бойся не попробовать</div>
             <div class="author"></div>
           </div>
           <button class="button change-quote"></button>
