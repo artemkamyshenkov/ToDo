@@ -1,5 +1,14 @@
 .greeting__name {
-  background-color: #c2c3cb;
-  font-size: 22px;
+  background: inherit;
+  font-size: $font-size;
   max-width: 150px;
+}
+
+.create-task-block__input {
+  border-radius: 5px;
+  font-size: $font-size;
+  width: 60%;
+  background: $color-form;
+  padding: 5px 15px;
+  margin-right: 20px;
 }
