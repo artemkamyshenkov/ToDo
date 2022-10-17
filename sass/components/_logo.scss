@@ -1,6 +1,7 @@
 .header__logo {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 10px;
 }
 .logo__element {
@@ -13,4 +14,5 @@
   font-size: 1.5rem;
   font-weight: 500;
   font-style: italic;
+  color: $color-main;
 }
