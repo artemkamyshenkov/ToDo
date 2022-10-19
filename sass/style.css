@@ -126,6 +126,33 @@ body {
   text-align: end;
 }
 
+.footer {
+  height: 80px;
+  background: #0078d7;
+}
+
+.social-list {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.social-list-item {
+  display: flex;
+  align-items: center;
+}
+.social-list-item a {
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.item__img img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
