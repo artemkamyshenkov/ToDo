@@ -1,0 +1,23 @@
+.footer {
+  height: 80px;
+  background: $color-header;
+}
+.social-list {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.social-list-item {
+  display: flex;
+  align-items: center;
+  & a {
+    color: $color-main;
+    font-size: 1.3rem;
+  }
+}
+.item__img img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}

@@ -48,3 +48,46 @@ function getLocalStorage() {
   }
 }
 window.addEventListener("load", getLocalStorage);
+
+const tasktForm = document.querySelector(".create-task-block");
+const taskInput = document.querySelector(".create-task-block__input");
+const tasksList = document.querySelector(".tasks__list");
+
+tasktForm.addEventListener("submit", function (event) {
+  //Отмена перезагрузки при отправке формы
+  event.preventDefault();
+
+  const taskText = taskInput.value;
+
+  const createTaskHTML = ` <li class="task__item">
+  <span class="task__title">${taskText}</span>
+  <div class="task__buttons">
+    <button
+      type="button"
+      data-action="done"
+      class="button btn-action"
+    >
+      <img
+        src="./assets/svg/tick.svg"
+        alt="Done"
+        width="18"
+        height="18"
+      />
+    </button>
+    <button
+      type="button"
+      data-action="delete"
+      class="button btn-action"
+    >
+      <img
+        src="./assets/svg/cross.svg"
+        alt="Done"
+        width="18"
+        height="18"
+      />
+    </button>
+  </div>
+</li>`;
+
+  tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
+});
