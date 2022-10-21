@@ -10,23 +10,38 @@
   justify-content: center;
   margin-bottom: 50px;
 }
-
-.task-item__text {
-  font-size: 1.7rem;
+.tasks__list {
+  padding: 0 0 0 10px;
+  border-radius: 10px;
 }
-
-.task-input-check {
-  margin-right: 10px;
-  height: 20px;
-  width: 20px;
+.btn-action {
+  padding: 5px 15px;
 }
-.task-item__container {
+.task__item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: $color-task-item;
+  padding: 3px 0 3px 10px;
+  border-radius: 10px;
+}
+.task__title {
+  font-size: 1.5rem;
 }
 
-.task-item {
-  border-bottom: 2px solid $color-button;
-  padding: 10px;
+.tasks__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30%;
+}
+.empty__img {
+  margin-bottom: 20px;
+  width: 125px;
+  height: 125px;
+}
+.empty__text {
+  font-size: 1.5rem;
 }

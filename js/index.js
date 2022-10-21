@@ -49,29 +49,45 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
-const tasks = [
-  {
-    id: "1138465078061",
-    completed: false,
-    text: "Посмотреть новый урок по JavaScript",
-  },
-  {
-    id: "1138465078062",
-    completed: false,
-    text: "Выполнить тест после урока",
-  },
-  {
-    id: "1138465078063",
-    completed: false,
-    text: "Выполнить ДЗ после урока",
-  },
-];
+const tasktForm = document.querySelector(".create-task-block");
+const taskInput = document.querySelector(".create-task-block__input");
+const tasksList = document.querySelector(".tasks__list");
 
-class Tasks {
-  createTask(taskId, taskText) {
-    const tasksContainer = document.querySelector(".tasks__container");
-    const taskItem = document.createElement("div");
-    taskItem.className = "task-item";
-    taskItem.dataset.taskId = taskId;
-  }
-}
+tasktForm.addEventListener("submit", function (event) {
+  //Отмена перезагрузки при отправке формы
+  event.preventDefault();
+
+  const taskText = taskInput.value;
+
+  const createTaskHTML = ` <li class="task__item">
+  <span class="task__title">${taskText}</span>
+  <div class="task__buttons">
+    <button
+      type="button"
+      data-action="done"
+      class="button btn-action"
+    >
+      <img
+        src="./assets/svg/tick.svg"
+        alt="Done"
+        width="18"
+        height="18"
+      />
+    </button>
+    <button
+      type="button"
+      data-action="delete"
+      class="button btn-action"
+    >
+      <img
+        src="./assets/svg/cross.svg"
+        alt="Done"
+        width="18"
+        height="18"
+      />
+    </button>
+  </div>
+</li>`;
+
+  tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
+});

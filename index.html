@@ -53,23 +53,15 @@
 
           <div class="tasks">
             <div class="tasks__container">
-              <div class="task-item">
-                <div class="task-item__container">
-                  <form class="task-item__form">
-                    <input type="checkbox" class="task-input-check" id="" />
-                    <label for=""></label>
-                    <span class="task-item__text"
-                      >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </span>
-                  </form>
-                  <button class="button task-item__button">Удалить</button>
-                </div>
+              <div class="tasks__empty">
+                <img
+                  src="./assets/svg/leaf.svg"
+                  alt="Empty list"
+                  class="empty__img"
+                />
+                <div class="empty__text">Список дел пуст</div>
               </div>
-            </div>
-            <div class="tasks__sidebar">
-              <button class="sidebar__button"></button>
-              <button class="sidebar__button"></button>
-              <button class="sidebar__button"></button>
+              <ul class="tasks__list"></ul>
             </div>
           </div>
         </div>
