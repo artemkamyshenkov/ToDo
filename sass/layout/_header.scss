@@ -1,0 +1,25 @@
+.header {
+  background-color: $color-header;
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.greeting__text {
+  font-size: $font-size;
+}
+
+.header__time {
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size;
+  color: $color-main;
+}
+.header__time-time {
+  text-align: end;
+}
+.header__time-date {
+}

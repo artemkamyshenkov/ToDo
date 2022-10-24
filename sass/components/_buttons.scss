@@ -1,0 +1,11 @@
+.button {
+  padding: 10px 25px;
+  background: $color-button;
+  border-radius: 5px;
+  color: $color-main;
+  font-size: 1rem;
+  user-select: none;
+}
+.btn-action img {
+  pointer-events: none;
+}

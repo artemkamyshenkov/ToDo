@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/image/favicon.png" type="image/ico" />
+    <link rel="stylesheet" href="./sass/style.css" />
+    <title>To Do - Мой день</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="container header__container">
+          <div class="header__logo">
+            <div class="logo__element">
+              <img src="./assets/image/Logo.png" alt="Main logo" />
+            </div>
+            <div class="logo__text"><h1>To Do</h1></div>
+          </div>
+          <div class="header__greeting">
+            <span class="greeting__text"></span>
+            <input
+              type="text"
+              class="greeting__name"
+              placeholder="[Введите имя]"
+              maxlength="15"
+            />
+          </div>
+          <div class="header__time">
+            <time class="header__time-time"></time>
+            <date class="header__time-date"></date>
+          </div>
+        </div>
+      </div>
+      <main class="main">
+        <div class="container main__container">
+          <form class="create-task-block">
+            <input
+              name="taskName"
+              class="create-task-block__input default-text-input"
+              type="text"
+              placeholder="Создайте новую задачу"
+              value=""
+            />
+            <button
+              type="submit"
+              class="button create-task-block__button default-button"
+            >
+              Создать
+            </button>
+          </form>
+
+          <div class="tasks">
+            <div class="tasks__container">
+              <div class="tasks__empty">
+                <img
+                  src="./assets/svg/leaf.svg"
+                  alt="Empty list"
+                  class="empty__img"
+                />
+                <div class="empty__text">Список дел пуст</div>
+              </div>
+              <ul class="tasks__list"></ul>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="social__container">
+            <ul class="social-list">
+              <li class="social-list-item">
+                <a class="social__icon" href="#"
+                  ><div class="item__img">
+                    <img src="./assets/image/discord.png" alt="discord" /></div
+                ></a>
+                <a href="#">Discord</a>
+              </li>
+              <li class="social-list-item">
+                <a
+                  class="social__icon"
+                  href="mailto:artmiller22831@gmail.com"
+                  target="_blank"
+                  ><div class="item__img">
+                    <img src="./assets/image/email.png" alt="email" /></div
+                ></a>
+                <a target="_blank" href="mailto:artmiller22831@gmail.com"
+                  >E-mail</a
+                >
+              </li>
+              <li class="social-list-item">
+                <a
+                  target="_blank"
+                  class="social__icon"
+                  href="https://github.com/artemkamyshenkov"
+                  ><div class="item__img">
+                    <img src="./assets/image/github.png" alt="github" /></div
+                ></a>
+                <a target="_blank" href="https://github.com/artemkamyshenkov"
+                  >GitHub</a
+                >
+              </li>
+              <li class="social-list-item">
+                <a
+                  target="_blank"
+                  class="social__icon"
+                  href="https://github.com/artemkamyshenkov"
+                  ><div class="item__img">
+                    <img
+                      src="./assets/image/Developer.png"
+                      alt="developer"
+                    /></div
+                ></a>
+                <a target="_blank" href="https://github.com/artemkamyshenkov"
+                  >Developer Artem Kamyshenkov</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(100% - 20px, 1260px);
+  margin-inline: auto;
+}
