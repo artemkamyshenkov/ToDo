@@ -171,6 +171,11 @@ body {
   border-radius: 5px;
   color: #ffffff;
   font-size: 1rem;
+  user-select: none;
+}
+
+.btn-action img {
+  pointer-events: none;
 }
 
 .header__logo {
@@ -196,6 +201,7 @@ body {
   background: inherit;
   font-size: 1.375rem;
   max-width: 150px;
+  color: #ffffff;
   caret-color: #ffffff;
 }
 .greeting__name::placeholder {
@@ -264,7 +270,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: 23%;
 }
 
 .empty__img {
@@ -275,6 +281,15 @@ body {
 
 .empty__text {
   font-size: 1.5rem;
+}
+
+.tasks__title_done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.none {
+  display: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */
