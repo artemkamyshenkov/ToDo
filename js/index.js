@@ -52,42 +52,73 @@ window.addEventListener("load", getLocalStorage);
 const tasktForm = document.querySelector(".create-task-block");
 const taskInput = document.querySelector(".create-task-block__input");
 const tasksList = document.querySelector(".tasks__list");
+const emptyTask = document.querySelector(".tasks__empty");
 
-tasktForm.addEventListener("submit", function (event) {
+tasktForm.addEventListener("submit", addTask);
+tasksList.addEventListener("click", deleteTask);
+tasksList.addEventListener("click", doneTask);
+
+function addTask(event) {
   //Отмена перезагрузки при отправке формы
   event.preventDefault();
 
   const taskText = taskInput.value;
 
   const createTaskHTML = ` <li class="task__item">
-  <span class="task__title">${taskText}</span>
-  <div class="task__buttons">
-    <button
-      type="button"
-      data-action="done"
-      class="button btn-action"
-    >
-      <img
-        src="./assets/svg/tick.svg"
-        alt="Done"
-        width="18"
-        height="18"
-      />
-    </button>
-    <button
-      type="button"
-      data-action="delete"
-      class="button btn-action"
-    >
-      <img
-        src="./assets/svg/cross.svg"
-        alt="Done"
-        width="18"
-        height="18"
-      />
-    </button>
-  </div>
+<span class="task__title">${taskText}</span>
+<div class="task__buttons">
+  <button
+    type="button"
+    data-action="done"
+    class="button btn-action"
+  >
+    <img
+      src="./assets/svg/tick.svg"
+      alt="Done"
+      width="18"
+      height="18"
+    />
+  </button>
+  <button
+    type="button"
+    data-action="delete"
+    class="button btn-action"
+  >
+    <img
+      src="./assets/svg/cross.svg"
+      alt="Done"
+      width="18"
+      height="18"
+    />
+  </button>
+</div>
 </li>`;
 
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
-});
+
+  taskInput.value = "";
+  taskInput.focus();
+
+  if (tasksList.children.length > 0) {
+    emptyTask.classList.add("none");
+  }
+}
+
+function deleteTask(event) {
+  if (event.target.dataset.action !== "delete") {
+    return;
+  }
+  const parentNode = event.target.closest(".task__item");
+  parentNode.remove();
+  if (tasksList.children.length === 0) {
+    emptyTask.classList.remove("none");
+  }
+}
+
+function doneTask(event) {
+  if (event.target.dataset.action !== "done") return;
+
+  const parentNode = event.target.closest(".task__item");
+  const taskTitle = parentNode.querySelector(".task__title");
+  taskTitle.classList.toggle("tasks__title_done");
+}
