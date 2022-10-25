@@ -53,6 +53,7 @@ const tasktForm = document.querySelector(".create-task-block");
 const taskInput = document.querySelector(".create-task-block__input");
 const tasksList = document.querySelector(".tasks__list");
 const emptyTask = document.querySelector(".tasks__empty");
+let tasks = [];
 
 tasktForm.addEventListener("submit", addTask);
 tasksList.addEventListener("click", deleteTask);
@@ -64,8 +65,19 @@ function addTask(event) {
 
   const taskText = taskInput.value;
 
-  const createTaskHTML = ` <li class="task__item">
-<span class="task__title">${taskText}</span>
+  const newTask = {
+    id: Date.now(),
+    text: taskText,
+    done: false,
+  };
+  tasks.push(newTask);
+
+  const cssClassTask = newTask.done
+    ? "task__title tasks__title_done"
+    : "task__title";
+
+  const createTaskHTML = ` <li id="${newTask.id}" class="task__item">
+<span class="${cssClassTask}">${newTask.text}</span>
 <div class="task__buttons">
   <button
     type="button"
@@ -109,12 +121,16 @@ function deleteTask(event) {
     return;
   }
   const parentNode = event.target.closest(".task__item");
+  const taskId = Number(parentNode.id);
+
+  //Фильтрация массива и удаление задачи с целевым индексом
+  tasks = tasks.filter((task) => task.id !== taskId);
+
   parentNode.remove();
   if (tasksList.children.length === 0) {
     emptyTask.classList.remove("none");
   }
 }
-
 function doneTask(event) {
   if (event.target.dataset.action !== "done") return;
 
