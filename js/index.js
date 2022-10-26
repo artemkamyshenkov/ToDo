@@ -56,6 +56,7 @@ const tasksContainer = document.querySelector('.tasks__container')
 
 let tasks = [];
 checkEmptyList()
+loadTasksToLocalStorage();
 
 tasktForm.addEventListener("submit", addTask);
 tasksList.addEventListener("click", deleteTask);
@@ -113,6 +114,7 @@ function addTask(event) {
   taskInput.value = "";
   taskInput.focus();
 
+  saveTasksToLocalStorage()
   checkEmptyList()
 }
 
@@ -126,6 +128,7 @@ function deleteTask(event) {
   //Фильтрация массива и удаление задачи с целевым индексом
   tasks = tasks.filter((task) => task.id !== taskId);
 
+  saveTasksToLocalStorage()
   parentNode.remove();
   checkEmptyList()
  
@@ -145,6 +148,8 @@ function doneTask(event) {
 
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
+
+  saveTasksToLocalStorage()
 }
 
 function checkEmptyList() {
@@ -165,3 +170,15 @@ function checkEmptyList() {
     emptyListElement ? emptyListElement.remove() : null;
   }
 }
+
+function saveTasksToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+function loadTasksToLocalStorage() {
+  if(localStorage.getItem('tasks'))
+  {
+    tasks = JSON.parse(localStorage.getItem('tasks'))
+  }
+}
+
