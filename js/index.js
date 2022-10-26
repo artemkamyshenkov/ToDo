@@ -52,8 +52,10 @@ window.addEventListener("load", getLocalStorage);
 const tasktForm = document.querySelector(".create-task-block");
 const taskInput = document.querySelector(".create-task-block__input");
 const tasksList = document.querySelector(".tasks__list");
-const emptyTask = document.querySelector(".tasks__empty");
+const tasksContainer = document.querySelector('.tasks__container')
+
 let tasks = [];
+checkEmptyList()
 
 tasktForm.addEventListener("submit", addTask);
 tasksList.addEventListener("click", deleteTask);
@@ -111,9 +113,7 @@ function addTask(event) {
   taskInput.value = "";
   taskInput.focus();
 
-  if (tasksList.children.length > 0) {
-    emptyTask.classList.add("none");
-  }
+  checkEmptyList()
 }
 
 function deleteTask(event) {
@@ -127,14 +127,41 @@ function deleteTask(event) {
   tasks = tasks.filter((task) => task.id !== taskId);
 
   parentNode.remove();
-  if (tasksList.children.length === 0) {
-    emptyTask.classList.remove("none");
-  }
+  checkEmptyList()
+ 
 }
 function doneTask(event) {
   if (event.target.dataset.action !== "done") return;
 
   const parentNode = event.target.closest(".task__item");
+  const taskId = Number(parentNode.id);
+
+  // Ищем задачу в массиве и меняем ей статус done на true
+
+  const findTaskDone = tasks.find((task) => task.id === taskId);
+
+  //Нашли задачу в массиве и поменяли ей статус с false на done
+  findTaskDone.done = !findTaskDone.done;
+
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
+}
+
+function checkEmptyList() {
+  if(tasks.length === 0){
+    const emptyListHTML = `<div class="tasks__empty">
+    <img
+      src="./assets/image/task-empty.png"
+      alt="Empty list"
+      class="empty__img"
+    />
+    <div class="empty__text">Список дел пуст</div>
+  </div>`
+
+  tasksContainer.insertAdjacentHTML('afterbegin', emptyListHTML)
+  }
+  if(tasks.length > 0){
+    const emptyListElement = document.querySelector('.tasks__empty');
+    emptyListElement ? emptyListElement.remove() : null;
+  }
 }
