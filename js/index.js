@@ -182,3 +182,45 @@ function loadTasksToLocalStorage() {
   }
 }
 
+function renderTasks(){
+  tasks.forEach((task) => {
+    const cssClassTask = task.done
+    ? "task__title tasks__title_done"
+    : "task__title";
+
+  const createTaskHTML = ` <li id="${task.id}" class="task__item">
+<span class="${cssClassTask}">${task.text}</span>
+<div class="task__buttons">
+  <button
+    type="button"
+    data-action="done"
+    class="button btn-action"
+  >
+    <img
+      src="./assets/svg/tick.svg"
+      alt="Done"
+      width="18"
+      height="18"
+    />
+  </button>
+  <button
+    type="button"
+    data-action="delete"
+    class="button btn-action"
+  >
+    <img
+      src="./assets/svg/cross.svg"
+      alt="Done"
+      width="18"
+      height="18"
+    />
+  </button>
+</div>
+</li>`;
+
+  tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
+  })
+
+  checkEmptyList()
+}
+renderTasks()
