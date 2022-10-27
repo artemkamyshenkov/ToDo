@@ -9,16 +9,29 @@
 
 .btn-action {
   background: inherit;
+  padding: 5px;
 }
 
 .btn-delete {
+  margin-right: 5px;
   rotate: (45deg);
   @extend %transition;
 
-  &:hover{
+  &:hover {
     rotate: (0deg);
     @extend %transition;
   }
+}
+
+.btn-done {
+  rotate: (20deg);
+  @extend %transition;
+  
+  &:hover {
+    rotate: (0deg);
+    @extend %transition;
+  }
+
 }
 
 .btn-action img {

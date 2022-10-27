@@ -14,9 +14,6 @@
   padding: 0 0 0 10px;
   border-radius: 10px;
 }
-.btn-action {
-  padding: 5px 15px;
-}
 .task__item {
   display: flex;
   align-items: center;
@@ -27,7 +24,8 @@
   border-radius: 10px;
 }
 .task__title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .tasks__empty {

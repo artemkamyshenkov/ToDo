@@ -144,7 +144,7 @@ function renderTasks(task){
   <button
     type="button"
     data-action="done"
-    class="button btn-action"
+    class="button btn-action btn-done"
   >
     <img
       src="./assets/svg/tick.svg"
