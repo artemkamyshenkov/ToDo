@@ -11,11 +11,18 @@
 .social-list-item {
   display: flex;
   align-items: center;
+ 
+
   & a {
     color: $color-main;
     font-size: 1.3rem;
   }
+
+  &:hover{
+    text-decoration: underline;
+  }
 }
+
 .item__img img {
   width: 30px;
   height: 30px;
