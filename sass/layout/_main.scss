@@ -27,7 +27,7 @@
   border-radius: 10px;
 }
 .task__title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .tasks__empty {
@@ -43,7 +43,9 @@
   height: 125px;
 }
 .empty__text {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 300;
+  opacity: .7;
 }
 .tasks__title_done {
   text-decoration: line-through;
@@ -51,4 +53,9 @@
 }
 .none {
   display: none !important;
+}
+
+.tasks__container{
+  max-width: 71%;
+  margin: auto;
 }

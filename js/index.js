@@ -156,10 +156,10 @@ function renderTasks(task){
   <button
     type="button"
     data-action="delete"
-    class="button btn-action"
+    class="button btn-action btn-delete"
   >
     <img
-      src="./assets/svg/cross.svg"
+      src="./assets/svg/remove.svg"
       alt="Done"
       width="18"
       height="18"
