@@ -55,8 +55,11 @@ const tasksList = document.querySelector(".tasks__list");
 const tasksContainer = document.querySelector('.tasks__container')
 
 let tasks = [];
-checkEmptyList()
 loadTasksToLocalStorage();
+tasks.forEach((task) => {
+  renderTasks(task)
+})
+checkEmptyList();
 
 tasktForm.addEventListener("submit", addTask);
 tasksList.addEventListener("click", deleteTask);
@@ -75,41 +78,7 @@ function addTask(event) {
   };
   tasks.push(newTask);
 
-  const cssClassTask = newTask.done
-    ? "task__title tasks__title_done"
-    : "task__title";
-
-  const createTaskHTML = ` <li id="${newTask.id}" class="task__item">
-<span class="${cssClassTask}">${newTask.text}</span>
-<div class="task__buttons">
-  <button
-    type="button"
-    data-action="done"
-    class="button btn-action"
-  >
-    <img
-      src="./assets/svg/tick.svg"
-      alt="Done"
-      width="18"
-      height="18"
-    />
-  </button>
-  <button
-    type="button"
-    data-action="delete"
-    class="button btn-action"
-  >
-    <img
-      src="./assets/svg/cross.svg"
-      alt="Done"
-      width="18"
-      height="18"
-    />
-  </button>
-</div>
-</li>`;
-
-  tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
+  renderTasks(newTask)
 
   taskInput.value = "";
   taskInput.focus();
@@ -152,25 +121,6 @@ function doneTask(event) {
   saveTasksToLocalStorage()
 }
 
-function checkEmptyList() {
-  if(tasks.length === 0){
-    const emptyListHTML = `<div class="tasks__empty">
-    <img
-      src="./assets/image/task-empty.png"
-      alt="Empty list"
-      class="empty__img"
-    />
-    <div class="empty__text">Список дел пуст</div>
-  </div>`
-
-  tasksContainer.insertAdjacentHTML('afterbegin', emptyListHTML)
-  }
-  if(tasks.length > 0){
-    const emptyListElement = document.querySelector('.tasks__empty');
-    emptyListElement ? emptyListElement.remove() : null;
-  }
-}
-
 function saveTasksToLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks))
 }
@@ -182,8 +132,8 @@ function loadTasksToLocalStorage() {
   }
 }
 
-function renderTasks(){
-  tasks.forEach((task) => {
+function renderTasks(task){
+  
     const cssClassTask = task.done
     ? "task__title tasks__title_done"
     : "task__title";
@@ -219,8 +169,24 @@ function renderTasks(){
 </li>`;
 
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
-  })
 
-  checkEmptyList()
 }
-renderTasks()
+
+function checkEmptyList() {
+  if(tasks.length === 0){
+    const emptyListHTML = `<div class="tasks__empty">
+    <img
+      src="./assets/image/task-empty.png"
+      alt="Empty list"
+      class="empty__img"
+    />
+    <div class="empty__text">Список дел пуст</div>
+  </div>`
+  tasksContainer.insertAdjacentHTML('afterbegin', emptyListHTML)
+  }
+  if(tasks.length > 0){
+    const emptyListElement = document.querySelector('.tasks__empty');
+    emptyListElement ? emptyListElement.remove() : null;
+  }
+ 
+}
