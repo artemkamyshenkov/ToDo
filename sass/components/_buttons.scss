@@ -6,6 +6,36 @@
   font-size: 1rem;
   user-select: none;
 }
+
+.btn-action {
+  background: inherit;
+  padding: 5px;
+}
+
+.btn-delete {
+  margin-right: 5px;
+  rotate: (45deg);
+  @extend %transition;
+
+  &:hover {
+    rotate: (0deg);
+    @extend %transition;
+  }
+}
+
+.btn-done {
+  rotate: (20deg);
+  @extend %transition;
+  
+  &:hover {
+    rotate: (0deg);
+    @extend %transition;
+  }
+
+}
+
 .btn-action img {
   pointer-events: none;
+  width: 25px;
+  height: 25px;
 }
