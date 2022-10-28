@@ -6,7 +6,7 @@ This Vanilla JS To Do app to control your tasks and time
 + Tasks list;
 + Actual time and date;
 
-##Future updates:
+## Future updates:
 + Editing tasks;
 + Completed tasks section;
 + Application settings (display sections, dark theme, application language);
