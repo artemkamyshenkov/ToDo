@@ -1,24 +1,24 @@
 .footer {
-  height: 80px;
   background: $color-header;
 }
+
 .social-list {
-  padding-top: 25px;
+  padding: 25px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .social-list-item {
   display: flex;
   align-items: center;
- 
 
   & a {
     color: $color-main;
-    font-size: 1.3rem;
+    font-size: $font-size;
   }
 
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }
@@ -27,4 +27,20 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .social-list {
+    flex-wrap: wrap;
+  }
+
+  .social-list-item {
+    & a {
+      font-size: $font-size-mobile;
+    }
+  }
+  .item__img img {
+    width: 25px;
+    height: 25px;
+  }
 }

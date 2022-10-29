@@ -4,15 +4,30 @@
   flex-wrap: nowrap;
   gap: 10px;
 }
+
 .logo__element {
   & img {
     width: 35px;
     height: 35px;
   }
 }
+
 .logo__text {
   font-size: 1.5rem;
   font-weight: 500;
   font-style: italic;
   color: $color-main;
+}
+
+@media screen and (max-width: 576px) {
+  .logo__text {
+    display: none;
+  }
+
+  .logo__element {
+    & img {
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
