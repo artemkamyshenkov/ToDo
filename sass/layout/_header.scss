@@ -1,6 +1,7 @@
 .header {
   background-color: $color-header;
 }
+
 .header__container {
   display: flex;
   align-items: center;
@@ -18,8 +19,17 @@
   font-size: $font-size;
   color: $color-main;
 }
+
 .header__time-time {
   text-align: end;
 }
-.header__time-date {
+
+@media screen and (max-width: 576px) {
+  .header__time {
+    font-size: $font-size-mobile;
+  }
+
+  .greeting__text {
+    font-size: $font-size-mobile;
+  }
 }

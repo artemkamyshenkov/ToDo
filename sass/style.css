@@ -126,13 +126,20 @@ body {
   text-align: end;
 }
 
+@media screen and (max-width: 576px) {
+  .header__time {
+    font-size: 1rem;
+  }
+  .greeting__text {
+    font-size: 1rem;
+  }
+}
 .footer {
-  height: 80px;
   background: #0078d7;
 }
 
 .social-list {
-  padding-top: 25px;
+  padding: 25px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -144,7 +151,7 @@ body {
 }
 .social-list-item a {
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 1.375rem;
 }
 .social-list-item:hover {
   text-decoration: underline;
@@ -156,6 +163,18 @@ body {
   margin-right: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  .social-list {
+    flex-wrap: wrap;
+  }
+  .social-list-item a {
+    font-size: 1rem;
+  }
+  .item__img img {
+    width: 25px;
+    height: 25px;
+  }
+}
 .wrapper {
   min-height: 100%;
   overflow: hidden;
@@ -203,6 +222,12 @@ body {
   height: 25px;
 }
 
+@media screen and (max-width: 576px) {
+  .btn-action img {
+    width: 20px;
+    height: 20px;
+  }
+}
 .header__logo {
   display: flex;
   align-items: center;
@@ -222,6 +247,15 @@ body {
   color: #ffffff;
 }
 
+@media screen and (max-width: 576px) {
+  .logo__text {
+    display: none;
+  }
+  .logo__element img {
+    width: 25px;
+    height: 25px;
+  }
+}
 .greeting__name {
   background: inherit;
   font-size: 1.375rem;
@@ -252,6 +286,14 @@ body {
   box-shadow: 2px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
+@media screen and (max-width: 576px) {
+  .greeting__name {
+    font-size: 1rem;
+  }
+  .create-task-block__input {
+    font-size: 1rem;
+  }
+}
 .main {
   flex: 1 1 auto;
 }
@@ -319,6 +361,17 @@ body {
 .tasks__container {
   max-width: 71%;
   margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .tasks__container {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .task__title {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
