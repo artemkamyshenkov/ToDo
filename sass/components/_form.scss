@@ -9,6 +9,7 @@
     opacity: 0.6;
   }
 }
+
 .greeting__text {
   color: $color-main;
 }
@@ -20,10 +21,20 @@
   background: $color-form;
   padding: 5px 15px;
   margin-right: 20px;
+
   &:hover {
     background: $color-main;
     @extend %transition;
     cursor: pointer;
     box-shadow: 2px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .greeting__name {
+    font-size: $font-size-mobile;
+  }
+  .create-task-block__input {
+    font-size: $font-size-mobile;
   }
 }

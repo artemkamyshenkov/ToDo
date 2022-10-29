@@ -26,16 +26,22 @@
 .btn-done {
   rotate: (20deg);
   @extend %transition;
-  
+
   &:hover {
     rotate: (0deg);
     @extend %transition;
   }
-
 }
 
 .btn-action img {
   pointer-events: none;
   width: 25px;
   height: 25px;
+}
+
+@media screen and (max-width: 576px) {
+  .btn-action img {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -15,13 +15,26 @@ function showTime() {
       month: "long",
       day: "numeric",
     };
+
+    //Медиа-запрос для изменения фррмата времени и даты на планшетах;
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    function handleTabletChange(e) {
+      if (e.matches) {
+        (options.weekday = "short"), (options.month = "short");
+      }
+    }
+    mediaQuery.addListener(handleTabletChange);
+    handleTabletChange(mediaQuery);
+
     const currentDate = date.toLocaleDateString("ru-RU", options);
     headerDate.textContent = currentDate;
 
     setTimeout(showTime, 1000);
   }
+
   showDate();
 }
+
 showTime();
 
 function getTimeOfDay() {
@@ -52,13 +65,13 @@ window.addEventListener("load", getLocalStorage);
 const tasktForm = document.querySelector(".create-task-block");
 const taskInput = document.querySelector(".create-task-block__input");
 const tasksList = document.querySelector(".tasks__list");
-const tasksContainer = document.querySelector('.tasks__container')
+const tasksContainer = document.querySelector(".tasks__container");
 
 let tasks = [];
 loadTasksToLocalStorage();
 tasks.forEach((task) => {
-  renderTasks(task)
-})
+  renderTasks(task);
+});
 checkEmptyList();
 
 tasktForm.addEventListener("submit", addTask);
@@ -78,13 +91,13 @@ function addTask(event) {
   };
   tasks.push(newTask);
 
-  renderTasks(newTask)
+  renderTasks(newTask);
 
   taskInput.value = "";
   taskInput.focus();
 
-  saveTasksToLocalStorage()
-  checkEmptyList()
+  saveTasksToLocalStorage();
+  checkEmptyList();
 }
 
 function deleteTask(event) {
@@ -97,10 +110,9 @@ function deleteTask(event) {
   //Фильтрация массива и удаление задачи с целевым индексом
   tasks = tasks.filter((task) => task.id !== taskId);
 
-  saveTasksToLocalStorage()
+  saveTasksToLocalStorage();
   parentNode.remove();
-  checkEmptyList()
- 
+  checkEmptyList();
 }
 function doneTask(event) {
   if (event.target.dataset.action !== "done") return;
@@ -118,23 +130,21 @@ function doneTask(event) {
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
 
-  saveTasksToLocalStorage()
+  saveTasksToLocalStorage();
 }
 
 function saveTasksToLocalStorage() {
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function loadTasksToLocalStorage() {
-  if(localStorage.getItem('tasks'))
-  {
-    tasks = JSON.parse(localStorage.getItem('tasks'))
+  if (localStorage.getItem("tasks")) {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 }
 
-function renderTasks(task){
-  
-    const cssClassTask = task.done
+function renderTasks(task) {
+  const cssClassTask = task.done
     ? "task__title tasks__title_done"
     : "task__title";
 
@@ -169,11 +179,10 @@ function renderTasks(task){
 </li>`;
 
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
-
 }
 
 function checkEmptyList() {
-  if(tasks.length === 0){
+  if (tasks.length === 0) {
     const emptyListHTML = `<div class="tasks__empty">
     <img
       src="./assets/image/task-empty.png"
@@ -181,12 +190,11 @@ function checkEmptyList() {
       class="empty__img"
     />
     <div class="empty__text">Список дел пуст</div>
-  </div>`
-  tasksContainer.insertAdjacentHTML('afterbegin', emptyListHTML)
+  </div>`;
+    tasksContainer.insertAdjacentHTML("afterbegin", emptyListHTML);
   }
-  if(tasks.length > 0){
-    const emptyListElement = document.querySelector('.tasks__empty');
+  if (tasks.length > 0) {
+    const emptyListElement = document.querySelector(".tasks__empty");
     emptyListElement ? emptyListElement.remove() : null;
   }
- 
 }
