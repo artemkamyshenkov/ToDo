@@ -9,3 +9,9 @@
   width: min(100% - 20px, 1260px);
   margin-inline: auto;
 }
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: min(100% - 10px, 576px);
+  }
+}
