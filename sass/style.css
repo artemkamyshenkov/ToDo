@@ -187,6 +187,11 @@ body {
   margin-inline: auto;
 }
 
+@media screen and (max-width: 576px) {
+  .container {
+    width: min(100% - 10px, 576px);
+  }
+}
 .button {
   padding: 10px 25px;
   background: #0078d7;
@@ -224,8 +229,20 @@ body {
 
 @media screen and (max-width: 576px) {
   .btn-action img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+  }
+  .button {
+    padding: 10px 10px;
+  }
+  .task__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .btn-done,
+.btn-delete {
+    padding: 0;
+    margin-right: 10px;
   }
 }
 .header__logo {
@@ -292,6 +309,10 @@ body {
   }
   .create-task-block__input {
     font-size: 1rem;
+    width: 100%;
+  }
+  .header__greeting {
+    max-width: 100px;
   }
 }
 .main {
@@ -371,6 +392,9 @@ body {
 @media screen and (max-width: 576px) {
   .task__title {
     font-size: 1rem;
+  }
+  .main__container {
+    padding: 30px 0 0 0;
   }
 }
 

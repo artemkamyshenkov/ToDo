@@ -1,8 +1,9 @@
-const headerTime = document.querySelector(".header__time-time");
-const headerDate = document.querySelector(".header__time-date");
-const greetingText = document.querySelector(".greeting__text");
-const greetingName = document.querySelector(".greeting__name");
+const headerTime = document.querySelector(".header__time-time"); // Блок HTML с временем;
+const headerDate = document.querySelector(".header__time-date"); // Блок HTML с датой;
+const greetingText = document.querySelector(".greeting__text"); // Input с приветствием;
+const greetingName = document.querySelector(".greeting__name"); // Input с именем пользователем;
 
+// Показать время и дату
 function showTime() {
   const date = new Date();
   const hours = date.getHours();
@@ -29,14 +30,15 @@ function showTime() {
     const currentDate = date.toLocaleDateString("ru-RU", options);
     headerDate.textContent = currentDate;
 
+    //Обновляем функцию каждую секунду для работы времени
     setTimeout(showTime, 1000);
   }
 
   showDate();
 }
-
 showTime();
 
+// Функция вывода приветствия в зависимости от времени суток;
 function getTimeOfDay() {
   const date = new Date();
   const hours = date.getHours();
@@ -47,14 +49,15 @@ function getTimeOfDay() {
   if (hours >= 00 && hours < 6) message = "Доброй ночи, ";
   greetingText.textContent = message;
 }
-
 getTimeOfDay();
 
+// Сохраняем имя пользователя перед перезагрузкой страницы;
 function setLocalStorage() {
   localStorage.setItem("greeting__name", greetingName.value);
 }
 window.addEventListener("beforeunload", setLocalStorage);
 
+// Получаем имя пользователя после перезагрузки страницы;
 function getLocalStorage() {
   if (localStorage.getItem("greeting__name")) {
     greetingName.value = localStorage.getItem("greeting__name");
@@ -62,44 +65,50 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
-const tasktForm = document.querySelector(".create-task-block");
-const taskInput = document.querySelector(".create-task-block__input");
-const tasksList = document.querySelector(".tasks__list");
-const tasksContainer = document.querySelector(".tasks__container");
+const tasktForm = document.querySelector(".create-task-block"); // Форма создания задач;
+const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
+const tasksList = document.querySelector(".tasks__list"); // ul блок списка задач;
+const tasksContainer = document.querySelector(".tasks__container"); // div блок списка задач;
 
-let tasks = [];
-loadTasksToLocalStorage();
+let tasks = []; // Пустой массив, где хранятся задачи;
+loadTasksToLocalStorage(); // Получаем из local storage список задач;
+
+// Перебираем массив задач и выводим все в HTML;
 tasks.forEach((task) => {
   renderTasks(task);
 });
-checkEmptyList();
+checkEmptyList(); // Проверяем массим на наличие задач;
 
-tasktForm.addEventListener("submit", addTask);
-tasksList.addEventListener("click", deleteTask);
-tasksList.addEventListener("click", doneTask);
+tasktForm.addEventListener("submit", addTask); // Вызов функции добавление задачи при отправке формы;
+tasksList.addEventListener("click", deleteTask); // Вызов функции удаление задачи при клике на кнопку;
+tasksList.addEventListener("click", doneTask); // Вызов функции выполненные задачи при клике на кнопку;
 
+//Функция добавления задач;
 function addTask(event) {
   //Отмена перезагрузки при отправке формы
   event.preventDefault();
 
-  const taskText = taskInput.value;
+  const taskText = taskInput.value; // Выводим значение input в HTML в виде названия задачи;
 
+  // Создаем  объект с новой задачей;
   const newTask = {
-    id: Date.now(),
-    text: taskText,
-    done: false,
+    id: Date.now(), // Id задачи в форме милисекунд для придания уникальности;
+    text: taskText, // Текст задачи;
+    done: false, // Проверяем выполнена задача или нет, если выполнена, то применить стиль done, задачу зачеркнуть;
   };
-  tasks.push(newTask);
 
-  renderTasks(newTask);
+  tasks.push(newTask); // Объект с задачей пушим в массив задач;
 
-  taskInput.value = "";
-  taskInput.focus();
+  renderTasks(newTask); // Вызов функции отображения задач в разметке HTML;
 
-  saveTasksToLocalStorage();
-  checkEmptyList();
+  taskInput.value = ""; // Удаляем значение input после каждой добавленной задачи;
+  taskInput.focus(); // Оставляем фокус на input после добаленной задачи;
+
+  saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
+  checkEmptyList(); // Проверяем массив на наличие задач;
 }
 
+// Функция удаления задач;
 function deleteTask(event) {
   if (event.target.dataset.action !== "delete") {
     return;
@@ -114,6 +123,8 @@ function deleteTask(event) {
   parentNode.remove();
   checkEmptyList();
 }
+
+// Функция ометки задачи как выполненная;
 function doneTask(event) {
   if (event.target.dataset.action !== "done") return;
 
@@ -121,7 +132,6 @@ function doneTask(event) {
   const taskId = Number(parentNode.id);
 
   // Ищем задачу в массиве и меняем ей статус done на true
-
   const findTaskDone = tasks.find((task) => task.id === taskId);
 
   //Нашли задачу в массиве и поменяли ей статус с false на done
@@ -130,19 +140,22 @@ function doneTask(event) {
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
 
-  saveTasksToLocalStorage();
+  saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
 }
 
+// Сохранение задач в local storage;
 function saveTasksToLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// Получение массива задач из local storage;
 function loadTasksToLocalStorage() {
   if (localStorage.getItem("tasks")) {
     tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 }
 
+// Отображаем задачи в разметке HTML;
 function renderTasks(task) {
   const cssClassTask = task.done
     ? "task__title tasks__title_done"
@@ -181,6 +194,7 @@ function renderTasks(task) {
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
 }
 
+// Проверка массива на наличие задач для отображаения блок пустого списка задач;
 function checkEmptyList() {
   if (tasks.length === 0) {
     const emptyListHTML = `<div class="tasks__empty">
@@ -193,6 +207,7 @@ function checkEmptyList() {
   </div>`;
     tasksContainer.insertAdjacentHTML("afterbegin", emptyListHTML);
   }
+
   if (tasks.length > 0) {
     const emptyListElement = document.querySelector(".tasks__empty");
     emptyListElement ? emptyListElement.remove() : null;

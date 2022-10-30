@@ -41,7 +41,19 @@
 
 @media screen and (max-width: 576px) {
   .btn-action img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+  }
+  .button {
+    padding: 10px 10px;
+  }
+  .task__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .btn-done,
+  .btn-delete {
+    padding: 0;
+    margin-right: 10px;
   }
 }
