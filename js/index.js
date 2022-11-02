@@ -83,6 +83,8 @@ tasktForm.addEventListener("submit", addTask); // Вызов функции до
 tasksList.addEventListener("click", deleteTask); // Вызов функции удаление задачи при клике на кнопку;
 tasksList.addEventListener("click", doneTask); // Вызов функции выполненные задачи при клике на кнопку;
 
+//Стили для кнопки добавления задач
+
 //Функция добавления задач;
 function addTask(event) {
   //Отмена перезагрузки при отправке формы
