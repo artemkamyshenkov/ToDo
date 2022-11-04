@@ -82,6 +82,7 @@ checkEmptyList(); // Проверяем массим на наличие зад�
 tasktForm.addEventListener("submit", addTask); // Вызов функции добавление задачи при отправке формы;
 tasksList.addEventListener("click", deleteTask); // Вызов функции удаление задачи при клике на кнопку;
 tasksList.addEventListener("click", doneTask); // Вызов функции выполненные задачи при клике на кнопку;
+tasksList.addEventListener("click", editTask);
 
 //Стили для кнопки добавления задач
 
@@ -115,7 +116,7 @@ function deleteTask(event) {
   if (event.target.dataset.action !== "delete") {
     return;
   }
-  const parentNode = event.target.closest(".task__item");
+  const parentNode = event.target.closest(".task-item");
   const taskId = Number(parentNode.id);
 
   //Фильтрация массива и удаление задачи с целевым индексом
@@ -129,8 +130,9 @@ function deleteTask(event) {
 // Функция ометки задачи как выполненная;
 function doneTask(event) {
   if (event.target.dataset.action !== "done") return;
+  // const checkBox = document.querySelector("");
 
-  const parentNode = event.target.closest(".task__item");
+  const parentNode = event.target.closest(".task-item");
   const taskId = Number(parentNode.id);
 
   // Ищем задачу в массиве и меняем ей статус done на true
@@ -143,6 +145,26 @@ function doneTask(event) {
   taskTitle.classList.toggle("tasks__title_done");
 
   saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
+}
+
+function editTask(event) {
+  if (event.target.dataset.action !== "edit") return;
+  if (event.target.dataset.action === "edit") {
+    const parentNode = event.target.closest(".task-item");
+    const btnEdit = parentNode.querySelector(".btn-edit");
+    parentNode.classList.toggle("edit-mode");
+    const editInput = parentNode.querySelector(".task-item__input");
+    const label = parentNode.querySelector("label");
+    const containsClass = parentNode.classList.contains("edit-mode");
+    //console.log(editInput);
+    if (containsClass) {
+      btnEdit.textContent = "save";
+      editInput.value = label.innerText;
+    } else {
+      btnEdit.textContent = "edit";
+      label.textContent = editInput.value;
+    }
+  }
 }
 
 // Сохранение задач в local storage;
@@ -163,20 +185,14 @@ function renderTasks(task) {
     ? "task__title tasks__title_done"
     : "task__title";
 
-  const createTaskHTML = ` <li id="${task.id}" class="task__item">
-<span class="${cssClassTask}">${task.text}</span>
-<div class="task__buttons">
-  <button
-    type="button"
-    data-action="done"
-    class="button btn-action btn-done"
-  >
-    <img
-      src="./assets/svg/tick.svg"
-      alt="Done"
-      width="18"
-      height="18"
-    />
+  const createTaskHTML = ` <li id="${task.id}" class="task-item">
+  <input class ="task-item__checkbox"  type="checkbox" data-action="done"
+  />
+  <label class="${cssClassTask}">${task.text}</label>
+  <input class="task-item__input"
+  type="text"/>
+  <div class="task__buttons">
+  <button class="button btn-action btn-edit" data-action="edit">edit
   </button>
   <button
     type="button"
@@ -190,7 +206,7 @@ function renderTasks(task) {
       height="18"
     />
   </button>
-</div>
+  </div>
 </li>`;
 
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
