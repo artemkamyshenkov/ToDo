@@ -68,6 +68,7 @@ window.addEventListener("load", getLocalStorage);
 const tasktForm = document.querySelector(".create-task-block"); // Форма создания задач;
 const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
 const tasksList = document.querySelector(".tasks__list"); // ul блок списка задач;
+const tasksCompletedList = document.querySelector(".tasks__list_completed"); // ul блок выполненных задач;
 const tasksContainer = document.querySelector(".tasks__container"); // div блок списка задач;
 
 let tasks = []; // Пустой массив, где хранятся задачи;
@@ -215,3 +216,21 @@ function checkEmptyList() {
     emptyListElement ? emptyListElement.remove() : null;
   }
 }
+
+// function renderTasksBlock() {
+//   if (tasks.length > 0) {
+//     const todoBlockHTML = ` <h3 class="title tasks__title_todo">TODO</h3>`;
+//     const completedBlockHTML = `<h3 class="title tasks__title_completed">Completed</h3>`;
+//     tasksContainer.insertAdjacentHTML("afterbegin", todoBlockHTML);
+//     tasksCompletedList.insertAdjacentHTML("afterbegin", completedBlockHTML);
+//   }
+
+//   if (tasks.length === 0) {
+//     const todoBlockHTML = document.querySelector(".tasks__title_todo");
+//     todoBlockHTML.style.display = "none";
+//     const completedBlockHTML = document.querySelector(
+//       ".tasks__title_completed"
+//     );
+//     completedBlockHTML.style.display = "none";
+//   }
+// }

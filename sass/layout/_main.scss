@@ -10,7 +10,7 @@
 .create-task-block {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .tasks__list {
@@ -67,6 +67,21 @@
   margin: auto;
 }
 
+.title {
+  font-size: $font-size-title;
+  border-bottom: 2px solid black;
+  font-weight: 500;
+}
+
+.tasks__title_todo {
+  padding: 0 0 10px 0;
+  margin: 0 0 20px 10px;
+}
+
+.tasks__title_completed {
+  padding: 0 0 10px 0;
+}
+
 @media screen and (max-width: 768px) {
   .tasks__container {
     max-width: 100%;
@@ -75,6 +90,10 @@
 
 @media screen and (max-width: 576px) {
   .task__title {
+    font-size: $font-size-mobile;
+  }
+
+  .title {
     font-size: $font-size-mobile;
   }
   .main__container {
