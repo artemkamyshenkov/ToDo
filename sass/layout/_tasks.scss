@@ -5,7 +5,6 @@
 }
 
 .tasks__list {
-  padding: 0 0 0 10px;
   border-radius: 10px;
 }
 
@@ -66,6 +65,7 @@
 
 @media screen and (max-width: 576px) {
   .task__title {
-    font-size: $font-size-mobile;
+    font-size: $font-size-task;
+    padding: 7px 0;
   }
 }
