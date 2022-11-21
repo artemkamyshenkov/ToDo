@@ -217,20 +217,20 @@ function checkEmptyList() {
   }
 }
 
-// function renderTasksBlock() {
-//   if (tasks.length > 0) {
-//     const todoBlockHTML = ` <h3 class="title tasks__title_todo">TODO</h3>`;
-//     const completedBlockHTML = `<h3 class="title tasks__title_completed">Completed</h3>`;
-//     tasksContainer.insertAdjacentHTML("afterbegin", todoBlockHTML);
-//     tasksCompletedList.insertAdjacentHTML("afterbegin", completedBlockHTML);
-//   }
+function renderTasksBlock() {
+  if (tasks.length > 0) {
+    const todoBlockHTML = ` <h3 class="title tasks__title_todo">TODO</h3>`;
+    const completedBlockHTML = `<h3 class="title tasks__title_completed">Completed</h3>`;
+    tasksContainer.insertAdjacentHTML("afterbegin", todoBlockHTML);
+    tasksCompletedList.insertAdjacentHTML("afterbegin", completedBlockHTML);
+  }
 
-//   if (tasks.length === 0) {
-//     const todoBlockHTML = document.querySelector(".tasks__title_todo");
-//     todoBlockHTML.style.display = "none";
-//     const completedBlockHTML = document.querySelector(
-//       ".tasks__title_completed"
-//     );
-//     completedBlockHTML.style.display = "none";
-//   }
-// }
+  if (tasks.length === 0) {
+    const todoBlockHTML = document.querySelector(".tasks__title_todo");
+    todoBlockHTML.style.display = "none";
+    const completedBlockHTML = document.querySelector(
+      ".tasks__title_completed"
+    );
+    completedBlockHTML.style.display = "none";
+  }
+}

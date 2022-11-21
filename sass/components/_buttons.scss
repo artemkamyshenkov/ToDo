@@ -14,37 +14,9 @@
 }
 
 .create-task-block__button:hover {
-  background: transparent;
-  color: #000;
-  border: 1px solid #000;
+  @extend %transition;
+  transform: scale(1.1);
 }
-
-.create-task-block__button:before,
-.create-task-block__button:after {
-  position: absolute;
-  content: "";
-  left: 0;
-  width: 100%;
-  height: 50%;
-  right: 0;
-  z-index: -1;
-  transition: all 0.5s ease;
-}
-
-.create-task-block__button:before {
-  top: 0;
-}
-
-.create-task-block__button:after {
-  bottom: 0;
-}
-
-.create-task-block__button:hover:before,
-.create-task-block__button:hover:after {
-  height: 0;
-  background-color: #000;
-}
-
 .btn-action {
   background: inherit;
   padding: 5px;
