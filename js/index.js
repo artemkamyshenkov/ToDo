@@ -72,6 +72,7 @@ const tasksCompletedList = document.querySelector(".tasks__list_completed"); // 
 const tasksContainer = document.querySelector(".tasks__container"); // div блок списка задач;
 
 let tasks = []; // Пустой массив, где хранятся задачи;
+let completedTasks = [];
 loadTasksToLocalStorage(); // Получаем из local storage список задач;
 
 // Перебираем массив задач и выводим все в HTML;
@@ -136,10 +137,8 @@ function doneTask(event) {
 
   // Ищем задачу в массиве и меняем ей статус done на true
   const findTaskDone = tasks.find((task) => task.id === taskId);
-
   //Нашли задачу в массиве и поменяли ей статус с false на done
   findTaskDone.done = !findTaskDone.done;
-
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
 
@@ -210,27 +209,8 @@ function checkEmptyList() {
   </div>`;
     tasksContainer.insertAdjacentHTML("afterbegin", emptyListHTML);
   }
-
   if (tasks.length > 0) {
     const emptyListElement = document.querySelector(".tasks__empty");
     emptyListElement ? emptyListElement.remove() : null;
-  }
-}
-
-function renderTasksBlock() {
-  if (tasks.length > 0) {
-    const todoBlockHTML = ` <h3 class="title tasks__title_todo">TODO</h3>`;
-    const completedBlockHTML = `<h3 class="title tasks__title_completed">Completed</h3>`;
-    tasksContainer.insertAdjacentHTML("afterbegin", todoBlockHTML);
-    tasksCompletedList.insertAdjacentHTML("afterbegin", completedBlockHTML);
-  }
-
-  if (tasks.length === 0) {
-    const todoBlockHTML = document.querySelector(".tasks__title_todo");
-    todoBlockHTML.style.display = "none";
-    const completedBlockHTML = document.querySelector(
-      ".tasks__title_completed"
-    );
-    completedBlockHTML.style.display = "none";
   }
 }
