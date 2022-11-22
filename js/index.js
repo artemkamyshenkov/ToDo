@@ -69,6 +69,7 @@ const tasktForm = document.querySelector(".create-task-block"); // Форма с
 const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
 const tasksList = document.querySelector(".tasks__list"); // ul блок списка задач;
 const tasksContainer = document.querySelector(".tasks__container"); // div блок списка задач;
+const taskCompleted = document.querySelector(".tasks__completed");
 
 let tasks = []; // Пустой массив, где хранятся задачи;
 loadTasksToLocalStorage(); // Получаем из local storage список задач;
@@ -82,7 +83,6 @@ checkEmptyList(); // Проверяем массим на наличие зад�
 tasktForm.addEventListener("submit", addTask); // Вызов функции добавление задачи при отправке формы;
 tasksList.addEventListener("click", deleteTask); // Вызов функции удаление задачи при клике на кнопку;
 tasksList.addEventListener("click", doneTask); // Вызов функции выполненные задачи при клике на кнопку;
-
 //Стили для кнопки добавления задач
 
 //Функция добавления задач;
@@ -192,7 +192,6 @@ function renderTasks(task) {
   </button>
 </div>
 </li>`;
-
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
 }
 
