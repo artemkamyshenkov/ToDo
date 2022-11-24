@@ -65,6 +65,8 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
+let theme = "light"; //Тема приложения
+
 const tasktForm = document.querySelector(".create-task-block"); // Форма создания задач;
 const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
 const tasksList = document.querySelector(".tasks__list"); // ul блок списка задач;
@@ -78,6 +80,7 @@ loadTasksToLocalStorage(); // Получаем из local storage список �
 tasks.forEach((task) => {
   renderTasks(task);
 });
+
 checkEmptyList(); // Проверяем массим на наличие задач;
 
 tasktForm.addEventListener("submit", addTask); // Вызов функции добавление задачи при отправке формы;
@@ -105,7 +108,7 @@ function addTask(event) {
 
   taskInput.value = ""; // Удаляем значение input после каждой добавленной задачи;
   taskInput.focus(); // Оставляем фокус на input после добаленной задачи;
-
+  setBlackThemeTask();
   saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
   checkEmptyList(); // Проверяем массив на наличие задач;
 }
@@ -138,10 +141,10 @@ function doneTask(event) {
 
   //Нашли задачу в массиве и поменяли ей статус с false на done
   findTaskDone.done = !findTaskDone.done;
-
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
 
+  parentNode.classList.add("completed");
   saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
 }
 
@@ -214,3 +217,36 @@ function checkEmptyList() {
     emptyListElement ? emptyListElement.remove() : null;
   }
 }
+
+function setBlackThemeToLocalStorage() {
+  localStorage.setItem("theme", theme);
+}
+setBlackThemeToLocalStorage();
+
+function setBlackTheme() {
+  let theme = localStorage.getItem("theme");
+  const wrapper = document.querySelector(".wrapper");
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+  const addBtn = document.querySelector(".create-task-block__button");
+  if (theme === "black") {
+    wrapper.classList.toggle("black");
+    header.classList.toggle("black");
+    footer.classList.toggle("black");
+    addBtn.classList.toggle("black");
+    taskInput.classList.toggle("black");
+  }
+}
+
+function setBlackThemeTask() {
+  let theme = localStorage.getItem("theme");
+  const taskItem = document.querySelectorAll(".task__item");
+  if (theme === "black") {
+    taskItem.forEach((task) => {
+      task.classList.add("black");
+    });
+  }
+}
+
+setBlackThemeTask();
+setBlackTheme();
