@@ -101,6 +101,7 @@ body {
 }
 
 .header {
+  position: relative;
   background-color: #0078d7;
 }
 
@@ -108,7 +109,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 
 .greeting__text {
@@ -126,9 +127,29 @@ body {
   text-align: end;
 }
 
+.header__setting {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.setting__img {
+  width: 25px;
+  height: 25px;
+}
+
 @media screen and (max-width: 576px) {
   .header__time {
     font-size: 1rem;
+  }
+  .setting__img {
+    width: 18px;
+    height: 18px;
+  }
+  .header__setting {
+    position: absolute;
+    top: 20px;
+    right: 0px;
   }
   .greeting__text {
     font-size: 1rem;
@@ -258,6 +279,26 @@ body {
   height: 25px;
 }
 
+.theme-btn {
+  appearance: none;
+  border-radius: 50%;
+  width: 2.5vw;
+  height: 2.5vw;
+  box-shadow: 0 0 5px #aac5c6;
+  border: 0.2vw solid rgba(2, 228, 231, 0.8);
+  background-color: #344056;
+  transition: 0.2s all linear;
+  margin-right: 10px;
+  position: relative;
+  top: 4px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.theme-btn:checked {
+  border: 0.7vw solid #344056;
+  background-color: rgba(2, 228, 231, 0.8);
+}
+
 @media screen and (max-width: 576px) {
   .btn-action img {
     width: 20px;
@@ -346,6 +387,10 @@ body {
     max-width: 100px;
   }
 }
+.setting {
+  display: none;
+}
+
 .create-task-block {
   display: flex;
   justify-content: center;
