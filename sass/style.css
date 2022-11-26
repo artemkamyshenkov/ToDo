@@ -101,7 +101,8 @@ body {
 }
 
 .header {
-  position: relative;
+  position: fixed;
+  width: 100%;
   background-color: #0078d7;
 }
 
@@ -226,32 +227,6 @@ body {
   border: none;
   position: relative;
 }
-.create-task-block__button::before {
-  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  content: "";
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.create-task-block__button:hover::before {
-  width: 100%;
-}
-.create-task-block__button.btn .create-task-block__button_text {
-  position: relative;
-  z-index: 10;
-  color: #ffffff;
-}
-.create-task-block__button.btn::before {
-  border-radius: 5px;
-  width: 0%;
-  background: #00f0b5;
-}
-.create-task-block__button.btn:hover::before {
-  background: #00f0b5;
-  width: 100%;
-}
 
 .btn-action {
   background: inherit;
@@ -282,21 +257,22 @@ body {
 .theme-btn {
   appearance: none;
   border-radius: 50%;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 20px;
+  height: 20px;
   box-shadow: 0 0 5px #aac5c6;
   border: 0.2vw solid rgba(2, 228, 231, 0.8);
   background-color: #344056;
   transition: 0.2s all linear;
-  margin-right: 10px;
-  position: relative;
-  top: 4px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 .theme-btn:checked {
-  border: 0.7vw solid #344056;
+  border: 5px solid #344056;
   background-color: rgba(2, 228, 231, 0.8);
+}
+
+.setting__btn {
+  background: transparent;
 }
 
 @media screen and (max-width: 576px) {
@@ -388,13 +364,61 @@ body {
   }
 }
 .setting {
-  display: none;
+  position: fixed;
+  top: 57px;
+  right: 0;
+  background-color: transparent;
+  z-index: 5;
+  transform: translateX(50%) scale(0);
+  transition: all 0.4s ease-in-out;
 }
 
+.setting.open {
+  transform: translateX(0%) scale(100%);
+}
+
+.setting__container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.setting__body {
+  background: #0078d7;
+  width: 40vmin;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  right: 0;
+  transition: all 0.8s ease 0s;
+  padding: 10px 0 40px 10px;
+}
+
+.setting__items {
+  display: flex;
+  justify-content: center;
+}
+
+.setting__item {
+  display: flex;
+  align-items: center;
+}
+
+.item__text {
+  color: #f0f8ff;
+  font-size: 1.5rem;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 576px) {
+  .setting {
+    top: 50px;
+  }
+}
 .create-task-block {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin: 70px 0 50px 0;
 }
 
 .tasks__list {

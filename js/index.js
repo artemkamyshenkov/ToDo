@@ -1,3 +1,5 @@
+"use strict";
+//import test from "./setting.js";
 const headerTime = document.querySelector(".header__time-time"); // Блок HTML с временем;
 const headerDate = document.querySelector(".header__time-date"); // Блок HTML с датой;
 const greetingText = document.querySelector(".greeting__text"); // Input с приветствием;
@@ -46,7 +48,7 @@ function getTimeOfDay() {
   if (hours >= 6 && hours < 12) message = "Доброе утро,";
   if (hours >= 12 && hours < 18) message = "Добрый день, ";
   if (hours >= 18 && hours < 24) message = "Добрый вечер, ";
-  if (hours >= 00 && hours < 6) message = "Доброй ночи, ";
+  if (hours >= 23 && hours < 6) message = "Доброй ночи, ";
   greetingText.textContent = message;
 }
 getTimeOfDay();
@@ -250,3 +252,14 @@ function setBlackThemeTask() {
 
 setBlackThemeTask();
 setBlackTheme();
+
+//Setting
+
+const settingBtn = document.querySelector(".setting__btn");
+const settingContainer = document.querySelector(".setting");
+
+settingBtn.addEventListener("click", openSetting);
+
+function openSetting() {
+  settingContainer.classList.toggle("open");
+}
