@@ -220,12 +220,13 @@ function checkEmptyList() {
   }
 }
 
+//Темная тема приложения
 function setBlackThemeToLocalStorage() {
   localStorage.setItem("theme", theme);
 }
 setBlackThemeToLocalStorage();
 
-function setBlackTheme() {
+function setBlackThemeForBlock() {
   let theme = localStorage.getItem("theme");
   const wrapper = document.querySelector(".wrapper");
   const header = document.querySelector(".header");
@@ -251,15 +252,40 @@ function setBlackThemeTask() {
 }
 
 setBlackThemeTask();
-setBlackTheme();
+setBlackThemeForBlock();
 
 //Setting
 
 const settingBtn = document.querySelector(".setting__btn");
+const blackThemeBtn = document.querySelector(".theme-btn");
 const settingContainer = document.querySelector(".setting");
 
-settingBtn.addEventListener("click", openSetting);
+settingBtn.addEventListener("click", openSetting); //Открыть панель настроек
 
 function openSetting() {
   settingContainer.classList.toggle("open");
 }
+
+//Если клик по открытым настройкам, они закроются
+document.onclick = function (e) {
+  if (e.target.classList.contains("setting__body")) {
+    settingContainer.classList.remove("open");
+  }
+};
+
+blackThemeBtn.addEventListener("click", setBlackTheme);
+
+function setBlackTheme() {
+  if (blackThemeBtn.hasAttribute("checked")) {
+    console.log("night");
+  }
+}
+setBlackTheme();
+
+blackThemeBtn.addEventListener("change", function () {
+  if (this.checked) {
+    theme = "black";
+  } else {
+    theme = "light";
+  }
+});
