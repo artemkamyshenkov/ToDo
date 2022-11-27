@@ -101,6 +101,9 @@ body {
 }
 
 .header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
   background-color: #0078d7;
 }
 
@@ -108,7 +111,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 
 .greeting__text {
@@ -126,9 +129,29 @@ body {
   text-align: end;
 }
 
+.header__setting {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.setting__img {
+  width: 25px;
+  height: 25px;
+}
+
 @media screen and (max-width: 576px) {
   .header__time {
     font-size: 1rem;
+  }
+  .setting__img {
+    width: 18px;
+    height: 18px;
+  }
+  .header__setting {
+    position: absolute;
+    top: 20px;
+    right: 0px;
   }
   .greeting__text {
     font-size: 1rem;
@@ -205,32 +228,6 @@ body {
   border: none;
   position: relative;
 }
-.create-task-block__button::before {
-  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  content: "";
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.create-task-block__button:hover::before {
-  width: 100%;
-}
-.create-task-block__button.btn .create-task-block__button_text {
-  position: relative;
-  z-index: 10;
-  color: #ffffff;
-}
-.create-task-block__button.btn::before {
-  border-radius: 5px;
-  width: 0%;
-  background: #00f0b5;
-}
-.create-task-block__button.btn:hover::before {
-  background: #00f0b5;
-  width: 100%;
-}
 
 .btn-action {
   background: inherit;
@@ -258,6 +255,27 @@ body {
   height: 25px;
 }
 
+.theme-btn {
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 5px #aac5c6;
+  border: 0.2vw solid rgba(2, 228, 231, 0.8);
+  background-color: #344056;
+  transition: 0.2s all linear;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.theme-btn:checked {
+  border: 5px solid #344056;
+  background-color: rgba(2, 228, 231, 0.8);
+}
+
+.setting__btn {
+  background: transparent;
+}
+
 @media screen and (max-width: 576px) {
   .btn-action img {
     width: 20px;
@@ -271,7 +289,7 @@ body {
     flex-wrap: nowrap;
   }
   .btn-done,
-.btn-delete {
+  .btn-delete {
     padding: 0;
     margin-right: 10px;
   }
@@ -346,10 +364,62 @@ body {
     max-width: 100px;
   }
 }
+.setting {
+  position: fixed;
+  top: 57px;
+  right: 0;
+  background-color: transparent;
+  z-index: 10;
+  transform: translateX(50%) scale(0);
+  transition: all 0.4s ease-in-out;
+}
+
+.setting.open {
+  transform: translateX(0%) scale(100%);
+}
+
+.setting__container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.setting__body {
+  background: #0078d7;
+  width: 40vmin;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  right: 0;
+  transition: all 0.8s ease 0s;
+  padding: 30px 0 40px 10px;
+}
+
+.setting__items {
+  display: flex;
+  justify-content: center;
+}
+
+.setting__item {
+  display: flex;
+  align-items: center;
+}
+
+.item__text {
+  color: #f0f8ff;
+  font-size: 1.5rem;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 576px) {
+  .setting {
+    top: 50px;
+  }
+}
 .create-task-block {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin: 70px 0 50px 0;
 }
 
 .tasks__list {
@@ -429,6 +499,42 @@ body {
   .main__container {
     padding: 30px 0 0 0;
   }
+}
+.wrapper.black {
+  background: #11100f;
+}
+
+.header.black {
+  background: #252423;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.footer.black {
+  background: #252423;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.greeting__name.black {
+  background: #252423;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.create-task-block__input.black {
+  background: #252423;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.task__item.black {
+  background: #252423;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.task__title.black {
+  color: #ffffff;
+}
+
+.create-task-block__button.black {
+  background: #252423;
 }
 
 /*# sourceMappingURL=style.css.map */

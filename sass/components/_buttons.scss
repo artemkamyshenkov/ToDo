@@ -10,39 +10,6 @@
 .create-task-block__button {
   border: none;
   position: relative;
-  &::before {
-    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    content: "";
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  &:hover {
-    &::before {
-      width: 100%;
-    }
-  }
-  &.btn {
-    & .create-task-block__button_text {
-      position: relative;
-      z-index: 10;
-      color: $color-main;
-    }
-
-    &::before {
-      border-radius: 5px;
-      width: 0%;
-      background: #00f0b5;
-    }
-    &:hover {
-      &::before {
-        background: #00f0b5;
-        width: 100%;
-      }
-    }
-  }
 }
 
 .btn-action {
@@ -77,6 +44,26 @@
   height: 25px;
 }
 
+.theme-btn {
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 5px #aac5c6;
+  border: 0.2vw solid rgba(2, 228, 231, 0.8);
+  background-color: #344056;
+  transition: 0.2s all linear;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:checked {
+    border: 5px solid #344056;
+    background-color: rgba(2, 228, 231, 0.8);
+  }
+}
+
+.setting__btn {
+  background: transparent;
+}
 @media screen and (max-width: 576px) {
   .btn-action img {
     width: 20px;

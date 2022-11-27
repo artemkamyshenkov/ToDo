@@ -1,3 +1,5 @@
+"use strict";
+//import test from "./setting.js";
 const headerTime = document.querySelector(".header__time-time"); // Блок HTML с временем;
 const headerDate = document.querySelector(".header__time-date"); // Блок HTML с датой;
 const greetingText = document.querySelector(".greeting__text"); // Input с приветствием;
@@ -46,7 +48,7 @@ function getTimeOfDay() {
   if (hours >= 6 && hours < 12) message = "Доброе утро,";
   if (hours >= 12 && hours < 18) message = "Добрый день, ";
   if (hours >= 18 && hours < 24) message = "Добрый вечер, ";
-  if (hours >= 00 && hours < 6) message = "Доброй ночи, ";
+  if (hours >= 23 && hours < 6) message = "Доброй ночи, ";
   greetingText.textContent = message;
 }
 getTimeOfDay();
@@ -65,10 +67,13 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
+let theme = "light"; //Тема приложения
+
 const tasktForm = document.querySelector(".create-task-block"); // Форма создания задач;
 const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
 const tasksList = document.querySelector(".tasks__list"); // ul блок списка задач;
 const tasksContainer = document.querySelector(".tasks__container"); // div блок списка задач;
+const taskCompleted = document.querySelector(".tasks__completed");
 
 let tasks = []; // Пустой массив, где хранятся задачи;
 loadTasksToLocalStorage(); // Получаем из local storage список задач;
@@ -77,12 +82,12 @@ loadTasksToLocalStorage(); // Получаем из local storage список �
 tasks.forEach((task) => {
   renderTasks(task);
 });
+
 checkEmptyList(); // Проверяем массим на наличие задач;
 
 tasktForm.addEventListener("submit", addTask); // Вызов функции добавление задачи при отправке формы;
 tasksList.addEventListener("click", deleteTask); // Вызов функции удаление задачи при клике на кнопку;
 tasksList.addEventListener("click", doneTask); // Вызов функции выполненные задачи при клике на кнопку;
-
 //Стили для кнопки добавления задач
 
 //Функция добавления задач;
@@ -105,7 +110,7 @@ function addTask(event) {
 
   taskInput.value = ""; // Удаляем значение input после каждой добавленной задачи;
   taskInput.focus(); // Оставляем фокус на input после добаленной задачи;
-
+  setBlackThemeTask();
   saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
   checkEmptyList(); // Проверяем массив на наличие задач;
 }
@@ -138,10 +143,10 @@ function doneTask(event) {
 
   //Нашли задачу в массиве и поменяли ей статус с false на done
   findTaskDone.done = !findTaskDone.done;
-
   const taskTitle = parentNode.querySelector(".task__title");
   taskTitle.classList.toggle("tasks__title_done");
 
+  parentNode.classList.add("completed");
   saveTasksToLocalStorage(); // При добавлении задачи сохраняем ее в local storage;
 }
 
@@ -192,7 +197,6 @@ function renderTasks(task) {
   </button>
 </div>
 </li>`;
-
   tasksList.insertAdjacentHTML("beforeend", createTaskHTML);
 }
 
@@ -215,3 +219,73 @@ function checkEmptyList() {
     emptyListElement ? emptyListElement.remove() : null;
   }
 }
+
+//Темная тема приложения
+function setBlackThemeToLocalStorage() {
+  localStorage.setItem("theme", theme);
+}
+setBlackThemeToLocalStorage();
+
+function setBlackThemeForBlock() {
+  let theme = localStorage.getItem("theme");
+  const wrapper = document.querySelector(".wrapper");
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+  const addBtn = document.querySelector(".create-task-block__button");
+  if (theme === "black") {
+    wrapper.classList.toggle("black");
+    header.classList.toggle("black");
+    footer.classList.toggle("black");
+    addBtn.classList.toggle("black");
+    taskInput.classList.toggle("black");
+  }
+}
+
+function setBlackThemeTask() {
+  let theme = localStorage.getItem("theme");
+  const taskItem = document.querySelectorAll(".task__item");
+  if (theme === "black") {
+    taskItem.forEach((task) => {
+      task.classList.add("black");
+    });
+  }
+}
+
+setBlackThemeTask();
+setBlackThemeForBlock();
+
+//Setting
+
+const settingBtn = document.querySelector(".setting__btn");
+const blackThemeBtn = document.querySelector(".theme-btn");
+const settingContainer = document.querySelector(".setting");
+
+settingBtn.addEventListener("click", openSetting); //Открыть панель настроек
+
+function openSetting() {
+  settingContainer.classList.toggle("open");
+}
+
+//Если клик по открытым настройкам, они закроются
+document.onclick = function (e) {
+  if (e.target.classList.contains("setting__body")) {
+    settingContainer.classList.remove("open");
+  }
+};
+
+blackThemeBtn.addEventListener("click", setBlackTheme);
+
+function setBlackTheme() {
+  if (blackThemeBtn.hasAttribute("checked")) {
+    console.log("night");
+  }
+}
+setBlackTheme();
+
+blackThemeBtn.addEventListener("change", function () {
+  if (this.checked) {
+    theme = "black";
+  } else {
+    theme = "light";
+  }
+});
