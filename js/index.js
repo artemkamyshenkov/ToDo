@@ -220,6 +220,7 @@ function checkEmptyList() {
   }
 }
 
+//Темная тема приложения
 function setBlackThemeToLocalStorage() {
   localStorage.setItem("theme", theme);
 }
@@ -263,3 +264,9 @@ settingBtn.addEventListener("click", openSetting);
 function openSetting() {
   settingContainer.classList.toggle("open");
 }
+
+document.onclick = function (e) {
+  if (e.target.classList.contains("setting__body")) {
+    settingContainer.classList.remove("open");
+  }
+};
