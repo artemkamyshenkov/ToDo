@@ -251,9 +251,6 @@ function setBlackThemeTask() {
   }
 }
 
-setBlackThemeTask();
-setBlackThemeForBlock();
-
 //Setting
 
 const settingBtn = document.querySelector(".setting__btn");
@@ -273,19 +270,5 @@ document.onclick = function (e) {
   }
 };
 
-blackThemeBtn.addEventListener("click", setBlackTheme);
-
-function setBlackTheme() {
-  if (blackThemeBtn.hasAttribute("checked")) {
-    console.log("night");
-  }
-}
-setBlackTheme();
-
-blackThemeBtn.addEventListener("change", function () {
-  if (this.checked) {
-    theme = "black";
-  } else {
-    theme = "light";
-  }
-});
+setBlackThemeTask();
+setBlackThemeForBlock();
