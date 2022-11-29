@@ -44,23 +44,19 @@
   height: 25px;
 }
 
-.theme-btn {
-  appearance: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  box-shadow: 0 0 5px #aac5c6;
-  border: 0.2vw solid rgba(2, 228, 231, 0.8);
-  background-color: #344056;
-  transition: 0.2s all linear;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  &:checked {
-    border: 5px solid #344056;
-    background-color: rgba(2, 228, 231, 0.8);
+.btn-theme {
+  background: transparent;
+  font-size: 1.3rem;
+  color: $color-main;
+  margin-right: 15px;
+  &:last-child {
+    margin-right: 0;
   }
 }
 
+.btn-theme.active {
+  border-bottom: 2px solid $color-main;
+}
 .setting__btn {
   background: transparent;
 }
