@@ -57,9 +57,11 @@
 .btn-theme.active {
   border-bottom: 2px solid $color-main;
 }
+
 .setting__btn {
   background: transparent;
 }
+
 @media screen and (max-width: 576px) {
   .btn-action img {
     width: 20px;

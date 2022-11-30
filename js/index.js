@@ -221,6 +221,12 @@ function checkEmptyList() {
 }
 
 //Темная тема приложения
+const settingBtn = document.querySelector(".setting__btn");
+const blackThemeBtn = document.querySelector(".black-theme");
+const lightThemeBtn = document.querySelector(".light-theme");
+const settingContainer = document.querySelector(".setting");
+const settingBody = document.querySelector(".setting__body");
+
 function setBlackThemeToLocalStorage() {
   localStorage.setItem("theme", theme);
 }
@@ -243,6 +249,9 @@ function setBlackThemeForBlock() {
     footer.classList.add("black");
     addBtn.classList.add("black");
     taskInput.classList.add("black");
+    settingBody.classList.add("black");
+    blackThemeBtn.classList.add("black");
+    lightThemeBtn.classList.add("black");
   }
 
   if (theme === "light") {
@@ -251,6 +260,9 @@ function setBlackThemeForBlock() {
     footer.classList.remove("black");
     addBtn.classList.remove("black");
     taskInput.classList.remove("black");
+    settingBody.classList.remove("black");
+    blackThemeBtn.classList.remove("black");
+    lightThemeBtn.classList.remove("black");
   }
   getBlackThemeToLocalStorage();
 }
@@ -274,12 +286,8 @@ function setBlackThemeTask() {
 
 setBlackThemeForBlock();
 setBlackThemeTask();
-//Setting
 
-const settingBtn = document.querySelector(".setting__btn");
-const blackThemeBtn = document.querySelector(".black-theme");
-const lightThemeBtn = document.querySelector(".light-theme");
-const settingContainer = document.querySelector(".setting");
+//Setting
 
 settingBtn.addEventListener("click", openSetting); //Открыть панель настроек
 
@@ -297,6 +305,7 @@ document.onclick = function (e) {
 blackThemeBtn.addEventListener("click", () => {
   theme = "black";
   setBlackThemeToLocalStorage();
+  setBlackThemeForBlock();
   setBlackThemeTask();
 });
 
