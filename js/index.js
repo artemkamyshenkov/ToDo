@@ -67,7 +67,7 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
-let theme = "light"; //Тема приложения
+let theme; //Тема приложения
 
 const tasktForm = document.querySelector(".create-task-block"); // Форма создания задач;
 const taskInput = document.querySelector(".create-task-block__input"); // Инпут создания задач;
@@ -224,37 +224,61 @@ function checkEmptyList() {
 function setBlackThemeToLocalStorage() {
   localStorage.setItem("theme", theme);
 }
-setBlackThemeToLocalStorage();
+
+function getBlackThemeToLocalStorage() {
+  localStorage.getItem("theme");
+}
 
 function setBlackThemeForBlock() {
   let theme = localStorage.getItem("theme");
+
   const wrapper = document.querySelector(".wrapper");
   const header = document.querySelector(".header");
   const footer = document.querySelector(".footer");
   const addBtn = document.querySelector(".create-task-block__button");
+
   if (theme === "black") {
-    wrapper.classList.toggle("black");
-    header.classList.toggle("black");
-    footer.classList.toggle("black");
-    addBtn.classList.toggle("black");
-    taskInput.classList.toggle("black");
+    wrapper.classList.add("black");
+    header.classList.add("black");
+    footer.classList.add("black");
+    addBtn.classList.add("black");
+    taskInput.classList.add("black");
   }
+
+  if (theme === "light") {
+    wrapper.classList.remove("black");
+    header.classList.remove("black");
+    footer.classList.remove("black");
+    addBtn.classList.remove("black");
+    taskInput.classList.remove("black");
+  }
+  getBlackThemeToLocalStorage();
 }
 
 function setBlackThemeTask() {
   let theme = localStorage.getItem("theme");
+
   const taskItem = document.querySelectorAll(".task__item");
   if (theme === "black") {
     taskItem.forEach((task) => {
       task.classList.add("black");
     });
+  } else {
+    taskItem.forEach((task) => {
+      task.classList.remove("black");
+    });
   }
+
+  getBlackThemeToLocalStorage();
 }
 
+setBlackThemeForBlock();
+setBlackThemeTask();
 //Setting
 
 const settingBtn = document.querySelector(".setting__btn");
-const blackThemeBtn = document.querySelector(".theme-btn");
+const blackThemeBtn = document.querySelector(".black-theme");
+const lightThemeBtn = document.querySelector(".light-theme");
 const settingContainer = document.querySelector(".setting");
 
 settingBtn.addEventListener("click", openSetting); //Открыть панель настроек
@@ -270,5 +294,15 @@ document.onclick = function (e) {
   }
 };
 
-setBlackThemeTask();
-setBlackThemeForBlock();
+blackThemeBtn.addEventListener("click", () => {
+  theme = "black";
+  setBlackThemeToLocalStorage();
+  setBlackThemeTask();
+});
+
+lightThemeBtn.addEventListener("click", () => {
+  theme = "light";
+  setBlackThemeToLocalStorage();
+  setBlackThemeTask();
+  setBlackThemeForBlock();
+});
